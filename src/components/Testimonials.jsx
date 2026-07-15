@@ -16,18 +16,26 @@ export function Testimonials() {
         </Reveal>
 
         <div className="mt-[34px] grid grid-cols-2 gap-5 min-[560px]:max-w-[500px]">
-          {[0, 1].map((i) => (
-            <Reveal key={i} delay={i * 80}>
-              <MediaPlaceholder
-                badge="Video review"
-                icon="play"
-                ratio="9/16"
-                tone="dark"
-                title="Client testimonial clip"
-                note="Portrait 9:16, 20–45s. Phone-shot is perfectly fine."
-              />
-            </Reveal>
-          ))}
+          <Reveal>
+            <MediaPlaceholder
+              badge="Video review"
+              icon="play"
+              ratio="9/16"
+              tone="dark"
+              title="Client testimonial"
+              note="Your member testimonial. Portrait 9:16."
+            />
+          </Reveal>
+          <Reveal delay={80}>
+            <MediaPlaceholder
+              badge="Studio tour"
+              icon="play"
+              ratio="9/16"
+              tone="dark"
+              title="The studio & equipment"
+              note="Presentation of the space and equipment. Portrait 9:16."
+            />
+          </Reveal>
         </div>
 
         <div className="mt-9 grid gap-5 min-[560px]:grid-cols-2 min-[900px]:grid-cols-3">

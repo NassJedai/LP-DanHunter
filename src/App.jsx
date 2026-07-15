@@ -1,7 +1,7 @@
 import { TopBar } from './components/TopBar'
 import { Hero } from './components/Hero'
 import { Strip } from './components/Strip'
-import { HeroPhotoBand, Problem } from './components/Problem'
+import { HeroVideoBand, Problem } from './components/Problem'
 import { Differentiators } from './components/Differentiators'
 import { Process } from './components/Process'
 import { Testimonials } from './components/Testimonials'
@@ -10,7 +10,6 @@ import { Value } from './components/Value'
 import { Faq } from './components/Faq'
 import { LeadMagnet } from './components/LeadMagnet'
 import { FinalCta } from './components/FinalCta'
-import { Booking } from './components/Booking'
 import { Footer } from './components/Footer'
 import { MobileCta } from './components/MobileCta'
 import { ExitIntentModal } from './components/ExitIntentModal'
@@ -22,7 +21,7 @@ export default function App() {
       <main>
         <Hero slotsLeft={6} />
         <Strip />
-        <HeroPhotoBand />
+        <HeroVideoBand />
         <Problem />
         <Differentiators />
         <Process />
@@ -32,7 +31,6 @@ export default function App() {
         <Faq />
         <LeadMagnet />
         <FinalCta />
-        <Booking />
       </main>
       <Footer />
       <MobileCta />

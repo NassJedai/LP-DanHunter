@@ -1,6 +1,6 @@
 import { Container, SectionHeading, Reveal, Button } from './ui'
 import { Icon } from './Icon'
-import { includes } from '../data/content'
+import { includes, BOOKING_URL } from '../data/content'
 
 export function Value() {
   return (
@@ -37,7 +37,7 @@ export function Value() {
             <div className="mb-6 text-[0.92rem] text-txt/62">
               60 minutes · in-studio in Tervuren · limited slots each week
             </div>
-            <Button href="#book" className="mb-3.5 w-full">
+            <Button href={BOOKING_URL} className="mb-3.5 w-full">
               Book my assessment
             </Button>
             <small className="text-[0.78rem] text-txt/50">

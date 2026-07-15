@@ -1,4 +1,19 @@
-import { Container, SectionHeading, Reveal, MediaPlaceholder } from './ui'
+import { Container, SectionHeading, Reveal } from './ui'
+import jackie from '../assets/transformations/jackie.webp'
+import matt from '../assets/transformations/matt.webp'
+import lucy from '../assets/transformations/lucy.webp'
+import cody from '../assets/transformations/cody.webp'
+import chantal from '../assets/transformations/chantal.webp'
+
+// Real member before/after photos (shared with permission). Grouped by aspect
+// ratio so each grid row stays visually even: 5:4 landscape first, then 1:1.
+const TRANSFORMATIONS = [
+  { src: jackie, name: 'Jackie', ratio: '5 / 4' },
+  { src: matt, name: 'Matt', ratio: '5 / 4' },
+  { src: lucy, name: 'Lucy', ratio: '5 / 4' },
+  { src: cody, name: 'Cody', ratio: '1 / 1' },
+  { src: chantal, name: 'Chantal', ratio: '1 / 1' },
+]
 
 export function Results() {
   return (
@@ -13,15 +28,18 @@ export function Results() {
         </Reveal>
 
         <div className="mt-10 grid gap-5 min-[560px]:grid-cols-2 min-[820px]:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <Reveal key={i} delay={i * 80}>
-              <MediaPlaceholder
-                badge="Before / after"
-                icon="camera"
-                ratio="4/5"
-                tone="light"
-                title="Client transformation"
-                note="Side-by-side, same pose & lighting. Portrait 4:5. Written client consent required."
+          {TRANSFORMATIONS.map((t, i) => (
+            <Reveal
+              key={t.name}
+              delay={(i % 3) * 80}
+              className="overflow-hidden rounded-brand border border-ink/12 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+            >
+              <img
+                src={t.src}
+                alt={`${t.name} — before and after transformation at DH Tervuren`}
+                loading="lazy"
+                className="w-full"
+                style={{ aspectRatio: t.ratio, objectFit: 'cover' }}
               />
             </Reveal>
           ))}

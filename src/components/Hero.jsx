@@ -1,5 +1,6 @@
 import { Container, Button, Reveal } from './ui'
 import { Icon } from './Icon'
+import { BOOKING_URL } from '../data/content'
 
 const OFFER_ITEMS = [
   'Complete online pre-assessment (15–20 min)',
@@ -45,7 +46,7 @@ export function Hero({ slotsLeft = 6 }) {
           </Reveal>
 
           <Reveal as="div" delay={180} className="mb-6 flex flex-wrap items-center gap-4">
-            <Button href="#book">
+            <Button href={BOOKING_URL}>
               Book my assessment
               <Icon name="arrow" className="h-[18px] w-[18px]" strokeWidth={2.5} />
             </Button>
@@ -94,7 +95,7 @@ export function Hero({ slotsLeft = 6 }) {
               </li>
             ))}
           </ul>
-          <Button href="#book" className="w-full">
+          <Button href={BOOKING_URL} className="w-full">
             Reserve my slot
           </Button>
           <p className="mt-3.5 text-center text-[0.8rem] text-txt/55">

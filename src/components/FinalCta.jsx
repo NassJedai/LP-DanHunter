@@ -1,5 +1,6 @@
 import { Container, Button, Reveal } from './ui'
 import { Icon } from './Icon'
+import { BOOKING_URL } from '../data/content'
 
 export function FinalCta() {
   return (
@@ -13,7 +14,7 @@ export function FinalCta() {
           forward. Your body is sending signals. Come decode them with us.
         </Reveal>
         <Reveal delay={140}>
-          <Button href="#book" className="text-[1.1rem]! px-10! py-[19px]!">
+          <Button href={BOOKING_URL} className="text-[1.1rem]! px-10! py-[19px]!">
             Book my Performance &amp; Health Assessment
             <Icon name="arrow" className="h-[18px] w-[18px]" strokeWidth={2.5} />
           </Button>

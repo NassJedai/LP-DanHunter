@@ -1,13 +1,17 @@
-// Text-based DH wordmark (the original referenced a missing PNG).
-// Swap this for an <img> once the real logo asset is available.
-export function Logo({ className = '', size = 'md' }) {
-  const scale = size === 'lg' ? 'text-[1.7rem]' : 'text-[1.25rem]'
+// DH brand mark — the official "DH · DO IT FOR YOU" logo (white DH + red block,
+// transparent background), meant to sit on the dark header/footer ground.
+// The asset is imported so Vite fingerprints it (and inlines it as a data URI
+// in the single-file build used for the Claude Artifact).
+import logoUrl from '../assets/logo-dh2-white.webp'
+
+export function Logo({ height = 44, className = '' }) {
   return (
-    <span className={`inline-flex items-baseline gap-1.5 leading-none ${className}`} aria-label="DH — Do It For You">
-      <span className={`display-face ${scale} text-white`}>DH</span>
-      <span className="hidden text-[0.62rem] font-bold uppercase tracking-[0.22em] text-txt/55 sm:inline">
-        Do It For You
-      </span>
-    </span>
+    <img
+      src={logoUrl}
+      alt="DH — Do It For You"
+      style={{ height: `${height}px` }}
+      className={`w-auto select-none ${className}`}
+      draggable="false"
+    />
   )
 }

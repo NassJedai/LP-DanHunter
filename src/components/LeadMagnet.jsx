@@ -1,6 +1,7 @@
 import { Container, SectionHeading, Reveal } from './ui'
 import { Icon } from './Icon'
 import { LeadForm } from './LeadForm'
+import { BOOKING_URL } from '../data/content'
 
 const CARDS = [
   {
@@ -56,7 +57,12 @@ export function LeadMagnet() {
 
         <p className="mt-[30px] text-center text-[1rem] text-[#4a4d54]">
           Prefer to skip ahead?{' '}
-          <a href="#book" className="font-bold text-red-d hover:underline">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-red-d hover:underline"
+          >
             Book your €100 assessment →
           </a>
         </p>

@@ -1,4 +1,4 @@
-import { Container, SectionHeading, Reveal, MediaPlaceholder } from './ui'
+import { Container, SectionHeading, Reveal } from './ui'
 import { steps } from '../data/content'
 
 export function Process() {
@@ -9,28 +9,7 @@ export function Process() {
           <SectionHeading eyebrow="How your assessment works" title="60 minutes that change your trajectory." />
         </Reveal>
 
-        <div className="mt-10 grid gap-5 min-[820px]:grid-cols-[1.6fr_1fr]">
-          <Reveal>
-            <MediaPlaceholder
-              badge="Method video"
-              icon="play"
-              ratio="16/9"
-              title="The method, explained — filmed with FitLeads"
-              note="60–90s, coach to camera: what the assessment is and why it works. Landscape 16:9, MP4."
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <MediaPlaceholder
-              badge="Action photo"
-              icon="camera"
-              ratio="4/5"
-              title="Assessment in action"
-              note="InBody scan or a coaching moment. Portrait 4:5."
-            />
-          </Reveal>
-        </div>
-
-        <div className="mt-11 grid gap-[22px] min-[820px]:grid-cols-3">
+        <div className="mt-10 grid gap-[22px] min-[820px]:grid-cols-3">
           {steps.map((s, i) => (
             <Reveal
               key={s.num}

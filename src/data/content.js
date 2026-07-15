@@ -1,5 +1,8 @@
 // Centralised copy so sections stay declarative and easy to edit.
 
+// Booking / checkout destination for every "Book" / €100 CTA.
+export const BOOKING_URL = 'https://danhunter.trainin.app/checkout/PB7RPL'
+
 export const features = [
   {
     icon: 'users',
@@ -123,7 +126,7 @@ export const faqs = [
   },
   {
     q: 'How do I book?',
-    a: 'Choose your slot just below. We run a limited number of assessments each week to protect the quality — so it’s worth booking while there’s still space.',
+    a: 'Click any “Book my assessment” button to reserve and pay for your €100 session in a few seconds. We run a limited number of assessments each week to protect the quality — so it’s worth booking while there’s still space.',
   },
 ]
 

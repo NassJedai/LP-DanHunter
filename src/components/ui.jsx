@@ -9,6 +9,12 @@ export function Container({ className = '', children }) {
 /* Primary red pill CTA */
 export function Button({ as = 'a', variant = 'primary', className = '', children, ...props }) {
   const Tag = as
+  // External links open in a new tab (safely) unless the caller overrides.
+  const isExternal = as === 'a' && typeof props.href === 'string' && /^https?:\/\//.test(props.href)
+  if (isExternal && props.target === undefined) {
+    props.target = '_blank'
+    props.rel = 'noopener noreferrer'
+  }
   const base =
     'inline-flex items-center justify-center gap-2.5 rounded-full font-extrabold tracking-[0.01em] cursor-pointer transition-[transform,box-shadow,filter] duration-200 ease-out text-center select-none'
   const variants = {

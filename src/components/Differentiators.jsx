@@ -1,6 +1,6 @@
 import { Container, SectionHeading, Reveal, Button } from './ui'
 import { Icon } from './Icon'
-import { features } from '../data/content'
+import { features, BOOKING_URL } from '../data/content'
 
 export function Differentiators() {
   return (
@@ -43,7 +43,7 @@ export function Differentiators() {
                 to burn you out in six weeks.
               </p>
             </div>
-            <Button href="#book" className="whitespace-nowrap justify-self-start min-[820px]:justify-self-auto">
+            <Button href={BOOKING_URL} className="whitespace-nowrap justify-self-start min-[820px]:justify-self-auto">
               Book my assessment
             </Button>
           </Reveal>

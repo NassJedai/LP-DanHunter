@@ -1,12 +1,13 @@
 import { Container } from './ui'
 import { Logo } from './Logo'
+import { BOOKING_URL } from '../data/content'
 
 export function Footer() {
   return (
     <footer className="bg-bg pb-10 pt-11 text-txt/70">
       <Container className="grid gap-7 min-[720px]:grid-cols-[1.3fr_1fr_1fr]">
         <div>
-          <Logo size="lg" className="mb-3.5" />
+          <Logo height={76} className="mb-4" />
           <p className="text-[0.95rem] leading-[1.9]">
             Personal training, performance &amp; health. We start with you, then build the right strategy around you.
           </p>
@@ -31,7 +32,12 @@ export function Footer() {
             </a>
           </p>
           <p className="mt-2.5">
-            <a href="#book" className="text-[0.95rem] transition-colors hover:text-red">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.95rem] transition-colors hover:text-red"
+            >
               → Book my assessment
             </a>
           </p>

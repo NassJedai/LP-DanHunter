@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Container, Button } from './ui'
 import { Logo } from './Logo'
+import { BOOKING_URL } from '../data/content'
 
 export function TopBar() {
   const [scrolled, setScrolled] = useState(false)
@@ -19,11 +20,11 @@ export function TopBar() {
       }`}
     >
       <Container className="flex h-[62px] items-center justify-between gap-4">
-        <Logo />
+        <Logo height={40} />
         <div className="hidden text-[0.82rem] font-semibold text-muted md:block">
           Performance &amp; Health Assessment · Tervuren
         </div>
-        <Button href="#book" variant="compact">
+        <Button href={BOOKING_URL} variant="compact">
           Book — €100
         </Button>
       </Container>
