@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Container, SectionHeading, Reveal, Button } from './ui'
 import { Icon } from './Icon'
+import { FreeGuide } from './FreeGuide'
 import { BOOKING_URL } from '../data/content'
 import {
   QUESTIONS,
@@ -397,6 +398,10 @@ export function Scorecard() {
             {stage === 'gate' && <Gate onReveal={reveal} />}
             {stage === 'result' && <Result answers={answers} />}
           </div>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <FreeGuide />
         </Reveal>
       </Container>
     </section>

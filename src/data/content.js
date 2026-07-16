@@ -3,6 +3,13 @@
 // Booking / checkout destination for every "Book" / €100 CTA.
 export const BOOKING_URL = 'https://danhunter.trainin.app/checkout/PB7RPL'
 
+// Free guide PDF, hosted on Google Drive.
+// Must stay shared as "Anyone with the link" or visitors hit a request-access wall.
+// For a forced download instead of the Drive viewer, swap for:
+// https://drive.google.com/uc?export=download&id=1G5Fqx6alqYZHVCdqpmlAHPVYvGdt7DsK
+export const EBOOK_URL =
+  'https://drive.google.com/file/d/1G5Fqx6alqYZHVCdqpmlAHPVYvGdt7DsK/view?usp=drive_link'
+
 export const features = [
   {
     icon: 'users',
