@@ -8,7 +8,7 @@ import { Testimonials } from './components/Testimonials'
 import { Results } from './components/Results'
 import { Value } from './components/Value'
 import { Faq } from './components/Faq'
-import { LeadMagnet } from './components/LeadMagnet'
+import { Scorecard } from './components/Scorecard'
 import { FinalCta } from './components/FinalCta'
 import { Footer } from './components/Footer'
 import { MobileCta } from './components/MobileCta'
@@ -29,7 +29,7 @@ export default function App() {
         <Results />
         <Value />
         <Faq />
-        <LeadMagnet />
+        <Scorecard />
         <FinalCta />
       </main>
       <Footer />

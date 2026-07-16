@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { LeadForm } from './LeadForm'
+import { Button } from './ui'
 
 const KEY = 'dh_exit_shown'
 
@@ -81,13 +81,17 @@ export function ExitIntentModal() {
         <p className="mb-5 text-[1rem] text-txt/78">
           Take the free 2-minute Performance &amp; Health Scorecard and see exactly where to focus — no commitment.
         </p>
-        <LeadForm
-          magnet="scorecard-exit"
-          cta="Get my free score"
-          buttonVariant="primary"
-          inputTone="dark"
-          doneTone="dark"
-        />
+        <Button
+          as="button"
+          type="button"
+          onClick={() => {
+            setOpen(false)
+            document.getElementById('scorecard')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }}
+          className="w-full"
+        >
+          Take the free scorecard
+        </Button>
         <button
           onClick={() => setOpen(false)}
           className="mt-3.5 cursor-pointer border-0 bg-none text-[0.86rem] text-txt/55 underline hover:text-txt"
