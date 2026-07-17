@@ -1,37 +1,95 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+
+const YT_ORIGIN = 'https://www.youtube-nocookie.com'
 
 /**
  * YouTube embed with two modes:
- *  - autoplay: loads the player immediately, muted (browsers only allow
- *    autoplay when muted). Controls stay visible so the user can unmute.
+ *  - autoplay: loads the player immediately and starts it muted once it scrolls
+ *    into view (browsers only allow autoplay while muted). Controls stay visible
+ *    so the user can unmute.
  *  - facade (default): shows a poster + play button and only loads the (heavy)
  *    iframe on click, with sound on.
  *
- * Uses youtube-nocookie for privacy. Note: inside the Claude Artifact sandbox,
- * external embeds/images are blocked by the CSP, so playback works on the
- * dev/production site, not in the Artifact preview.
+ * Autoplay is never guaranteed: Safari, Low Power Mode or a per-site "block
+ * autoplay" setting can still refuse. When that happens the player simply shows
+ * its own play button, so the video is one click away rather than broken.
+ *
+ * Uses youtube-nocookie for privacy. Inside the Claude Artifact sandbox external
+ * embeds are blocked by the CSP, so playback only works on the real site.
  */
 export function YouTubeEmbed({ id, title = 'Video', autoplay = false, className = '' }) {
   const [playing, setPlaying] = useState(autoplay)
   const [posterFailed, setPosterFailed] = useState(false)
+  const wrapRef = useRef(null)
+  const iframeRef = useRef(null)
+  const readyRef = useRef(false)
 
-  const params = new URLSearchParams({
-    rel: '0',
-    modestbranding: '1',
-    playsinline: '1',
-    autoplay: '1',
-    ...(autoplay ? { mute: '1' } : {}),
-  })
-  const src = `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`
+  const src = useMemo(() => {
+    const params = new URLSearchParams({
+      rel: '0',
+      modestbranding: '1',
+      playsinline: '1',
+      autoplay: '1',
+      // Lets us re-issue play/mute commands via postMessage below.
+      enablejsapi: '1',
+      ...(autoplay ? { mute: '1' } : {}),
+    })
+    if (typeof window !== 'undefined') params.set('origin', window.location.origin)
+    return `${YT_ORIGIN}/embed/${id}?${params.toString()}`
+  }, [id, autoplay])
+
+  // Autoplay mode: ask the player to mute + play once it's both loaded and
+  // actually visible. The `autoplay=1` param alone is often ignored for an
+  // off-screen or late-loading iframe.
+  useEffect(() => {
+    if (!autoplay || !playing) return
+    const wrap = wrapRef.current
+    if (!wrap) return
+
+    const send = (func) => {
+      iframeRef.current?.contentWindow?.postMessage(
+        JSON.stringify({ event: 'command', func, args: [] }),
+        YT_ORIGIN,
+      )
+    }
+
+    let timers = []
+    const kick = () => {
+      if (!readyRef.current) return
+      send('mute')
+      send('playVideo')
+      // The player can still be booting; a couple of retries costs nothing.
+      timers = [400, 1200].map((d) => setTimeout(() => { send('mute'); send('playVideo') }, d))
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && kick()),
+      { threshold: 0.4 },
+    )
+    io.observe(wrap)
+
+    return () => {
+      io.disconnect()
+      timers.forEach(clearTimeout)
+    }
+  }, [autoplay, playing])
 
   return (
-    <div className={`relative aspect-video bg-bg ${className}`}>
+    <div ref={wrapRef} className={`relative aspect-video bg-bg ${className}`}>
       {playing ? (
         <iframe
+          ref={iframeRef}
+          onLoad={() => {
+            readyRef.current = true
+            // Nudge it as soon as the player exists, in case it's already in view.
+            iframeRef.current?.contentWindow?.postMessage(
+              JSON.stringify({ event: 'command', func: 'playVideo', args: [] }),
+              YT_ORIGIN,
+            )
+          }}
           className="absolute inset-0 h-full w-full"
           src={src}
           title={title}
-          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
