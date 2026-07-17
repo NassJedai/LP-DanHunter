@@ -1,5 +1,6 @@
-import { Container, SectionHeading, Reveal, MediaPlaceholder } from './ui'
-import { testimonials } from '../data/content'
+import { Container, SectionHeading, Reveal } from './ui'
+import { SelfHostedVideo } from './SelfHostedVideo'
+import { testimonials, TESTIMONIAL_VIDEO_URL } from '../data/content'
 
 export function Testimonials() {
   return (
@@ -15,15 +16,12 @@ export function Testimonials() {
           <span className="text-[0.85rem] font-semibold text-txt/70">from 97 Google reviews · Dan Hunter, Tervuren</span>
         </Reveal>
 
-        <div className="mt-[34px] max-w-[240px]">
+        <div className="mt-[34px] max-w-[260px]">
           <Reveal>
-            <MediaPlaceholder
-              badge="Video review"
-              icon="play"
-              ratio="9/16"
-              tone="dark"
-              title="Client testimonial"
-              note="Your member testimonial. Portrait 9:16."
+            <SelfHostedVideo
+              src={TESTIMONIAL_VIDEO_URL}
+              title="Member testimonial — DH Tervuren"
+              className="aspect-[9/16]"
             />
           </Reveal>
         </div>

@@ -3,6 +3,13 @@
 // Booking / checkout destination for every "Book" / €100 CTA.
 export const BOOKING_URL = 'https://danhunter.trainin.app/checkout/PB7RPL'
 
+// Client testimonial video, hosted on Cloudinary.
+// The f_auto,q_auto,w_720 transformation transcodes the 97 MB master down to
+// ~8.5 MB and serves the best format per browser. Keep it — linking the raw
+// upload would ship 97 MB to every visitor.
+export const TESTIMONIAL_VIDEO_URL =
+  'https://res.cloudinary.com/dluvilfsx/video/upload/f_auto,q_auto,w_720/v1784275704/4_caption_1_hwn3sl.mp4'
+
 // Free guide PDF, hosted on Google Drive.
 // Must stay shared as "Anyone with the link" or visitors hit a request-access wall.
 // For a forced download instead of the Drive viewer, swap for:
