@@ -15,7 +15,7 @@ export function Testimonials() {
           <span className="text-[0.85rem] font-semibold text-txt/70">from 97 Google reviews · Dan Hunter, Tervuren</span>
         </Reveal>
 
-        <div className="mt-[34px] grid grid-cols-2 gap-5 min-[560px]:max-w-[500px]">
+        <div className="mt-[34px] max-w-[240px]">
           <Reveal>
             <MediaPlaceholder
               badge="Video review"
@@ -24,16 +24,6 @@ export function Testimonials() {
               tone="dark"
               title="Client testimonial"
               note="Your member testimonial. Portrait 9:16."
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <MediaPlaceholder
-              badge="Studio tour"
-              icon="play"
-              ratio="9/16"
-              tone="dark"
-              title="The studio & equipment"
-              note="Presentation of the space and equipment. Portrait 9:16."
             />
           </Reveal>
         </div>
