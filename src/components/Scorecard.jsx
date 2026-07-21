@@ -132,50 +132,6 @@ function Quiz({ idx, answers, fading, onPick, onNext, onBack }) {
   )
 }
 
-/* ---------------------------------------------------------------- Email gate */
-function Gate({ onReveal }) {
-  const [email, setEmail] = useState('')
-
-  /* TODO(CRM): replace this stub with your GoHighLevel form/webhook.
-     `email` and the answers are available to push into your CRM. */
-  const submit = (e) => {
-    e.preventDefault()
-    onReveal(email)
-  }
-
-  return (
-    <div className="flex flex-col justify-center">
-      <div className="mb-3.5 text-center text-[0.76rem] font-extrabold uppercase tracking-[0.16em] text-[#ff6a70]">
-        Almost there
-      </div>
-      <h3 className="display-face mb-4 text-center text-[1.9rem] text-white">
-        Where should we send your <em className="not-italic text-red">scorecard?</em>
-      </h3>
-      <p className="mx-auto mb-6 max-w-[44ch] text-center text-[1.05rem] text-txt/75">
-        Enter your email and we'll reveal your full result — your score, your category breakdown, and where to focus
-        first.
-      </p>
-      <form onSubmit={submit}>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@email.com"
-          aria-label="Your email"
-          className="mb-3.5 w-full rounded-[14px] border-[1.5px] border-txt/12 bg-card px-[18px] py-4 text-center text-[1rem] text-white placeholder:text-muted focus:border-red focus:outline-none"
-        />
-        <Button as="button" type="submit" className="w-full">
-          Reveal my scorecard
-        </Button>
-        <small className="mt-3.5 block text-center text-[0.8rem] text-muted">
-          Free. We'll also send occasional health &amp; training tips — unsubscribe anytime.
-        </small>
-      </form>
-    </div>
-  )
-}
-
 /* ---------------------------------------------------------------- Result */
 function Result({ answers }) {
   const { pct, band, cats, lowest } = useMemo(() => {
@@ -324,7 +280,7 @@ function Result({ answers }) {
 
 /* ---------------------------------------------------------------- Section */
 export function Scorecard() {
-  const [stage, setStage] = useState('intro') // intro | quiz | gate | result
+  const [stage, setStage] = useState('intro') // intro | quiz | result
   const [answers, setAnswers] = useState(() => Array(QUESTIONS.length).fill(null))
   const [idx, setIdx] = useState(0)
   const [fading, setFading] = useState(false)
@@ -355,13 +311,7 @@ export function Scorecard() {
   const next = () => {
     if (answers[idx] === null) return
     if (idx < QUESTIONS.length - 1) go(idx + 1)
-    else setStage('gate')
-  }
-
-  const reveal = (email) => {
-    // eslint-disable-next-line no-console
-    console.log('Scorecard lead:', { email, answers })
-    setStage('result')
+    else setStage('result')
   }
 
   // Keep the panel in view when the stage changes (results are long)
@@ -395,7 +345,6 @@ export function Scorecard() {
                 onBack={() => idx > 0 && go(idx - 1)}
               />
             )}
-            {stage === 'gate' && <Gate onReveal={reveal} />}
             {stage === 'result' && <Result answers={answers} />}
           </div>
         </Reveal>
