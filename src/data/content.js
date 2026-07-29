@@ -1,7 +1,8 @@
 // Centralised copy so sections stay declarative and easy to edit.
 
-// Booking / checkout destination for every "Book" / €100 CTA.
-export const BOOKING_URL = 'https://danhunter.trainin.app/checkout/PB7RPL'
+// Booking destination for every "Book" / €100 CTA (trainin.app scheduling widget).
+export const BOOKING_URL =
+  'https://danhunter.trainin.app/widget/schedule?listing=LQBG2O&location=N8N3W'
 
 // Client testimonial video, hosted on Cloudinary.
 // The f_auto,q_auto,w_720 transformation transcodes the 97 MB master down to
