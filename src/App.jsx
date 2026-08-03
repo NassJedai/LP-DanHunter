@@ -4,6 +4,7 @@ import { Strip } from './components/Strip'
 import { HeroVideoBand, Problem } from './components/Problem'
 import { Differentiators } from './components/Differentiators'
 import { Process } from './components/Process'
+import { Equipment } from './components/Equipment'
 import { Testimonials } from './components/Testimonials'
 import { Results } from './components/Results'
 import { Value } from './components/Value'
@@ -25,6 +26,7 @@ export default function App() {
         <Problem />
         <Differentiators />
         <Process />
+        <Equipment />
         <Testimonials />
         <Results />
         <Value />

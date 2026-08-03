@@ -9,6 +9,10 @@ export const BOOKING_URL =
 // file as-is, so optimise any new video before dropping it in /public.
 export const TESTIMONIAL_VIDEO_URL = '/testimonial.mp4'
 
+// Studio / equipment tour video (9:16), self-hosted from /public.
+// Re-encoded from a 913 MB 4K master to ~40 MB (720p H.264) before committing.
+export const EQUIPMENT_VIDEO_URL = '/equipment.mp4'
+
 // Free guide PDF, hosted on Google Drive.
 // Must stay shared as "Anyone with the link" or visitors hit a request-access wall.
 // For a forced download instead of the Drive viewer, swap for:
