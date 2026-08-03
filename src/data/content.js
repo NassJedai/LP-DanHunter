@@ -4,12 +4,10 @@
 export const BOOKING_URL =
   'https://danhunter.trainin.app/widget/schedule?listing=LQBG2O&location=N8N3W'
 
-// Client testimonial video, hosted on Cloudinary.
-// The f_auto,q_auto,w_720 transformation transcodes the 97 MB master down to
-// ~8.5 MB and serves the best format per browser. Keep it — linking the raw
-// upload would ship 97 MB to every visitor.
-export const TESTIMONIAL_VIDEO_URL =
-  'https://res.cloudinary.com/dluvilfsx/video/upload/f_auto,q_auto,w_720/v1784275704/4_caption_1_hwn3sl.mp4'
+// Client testimonial video, self-hosted from /public (served by Vercel's CDN).
+// Pre-compressed to ~8.5 MB (H.264 720p) before committing — Vercel serves the
+// file as-is, so optimise any new video before dropping it in /public.
+export const TESTIMONIAL_VIDEO_URL = '/testimonial.mp4'
 
 // Free guide PDF, hosted on Google Drive.
 // Must stay shared as "Anyone with the link" or visitors hit a request-access wall.
