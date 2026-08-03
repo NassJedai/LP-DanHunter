@@ -3,11 +3,9 @@ import { Icon } from './Icon'
 import { SelfHostedVideo } from './SelfHostedVideo'
 import { BOOKING_URL, EQUIPMENT_VIDEO_URL } from '../data/content'
 
-// Generic, defensible copy — edit these to match the real studio & kit.
 const POINTS = [
-  'Professional-grade training equipment',
+  'The best equipment, matched to your specific goals',
   'Room to move and be coached properly — not a crowded commercial gym',
-  'InBody analysis and recovery tools on site',
 ]
 
 export function Equipment() {
@@ -20,7 +18,7 @@ export function Equipment() {
             <SectionHeading
               eyebrow="Inside the studio"
               title="A real space. Real equipment."
-              lead="This isn't a row of machines you fight over at peak hour. It's a dedicated performance studio, built for coached, structured training — take a look around."
+              lead="The best equipment to reach your specific goals — a dedicated performance studio built for coached, structured training, not a row of machines you fight over at peak hour."
             />
             <ul className="mt-7 grid gap-3.5">
               {POINTS.map((p) => (
