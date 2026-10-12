@@ -1,4 +1,5 @@
 import { Container, SectionHeading, Reveal } from './ui'
+import { useCopy } from '../lib/locale'
 import jackie from '../assets/transformations/jackie.webp'
 import matt from '../assets/transformations/matt.webp'
 import lucy from '../assets/transformations/lucy.webp'
@@ -16,14 +17,15 @@ const TRANSFORMATIONS = [
 ]
 
 export function Results() {
+  const { results: copy } = useCopy()
   return (
     <section id="results" className="py-[74px]">
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Real transformations"
-            title="Results you can see."
-            lead="Real members, real progress — shared with their permission. Not the point of the assessment, but proof the system works."
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            lead={copy.lead}
           />
         </Reveal>
 
@@ -36,7 +38,7 @@ export function Results() {
             >
               <img
                 src={t.src}
-                alt={`${t.name} — before and after transformation at DH Tervuren`}
+                alt={copy.alt(t.name)}
                 loading="lazy"
                 className="w-full"
                 style={{ aspectRatio: t.ratio, objectFit: 'cover' }}

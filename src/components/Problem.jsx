@@ -1,6 +1,7 @@
 import { Container, SectionHeading, Reveal } from './ui'
 import { Icon } from './Icon'
 import { YouTubeEmbed } from './YouTubeEmbed'
+import { useCopy } from '../lib/locale'
 
 const WITHOUT = [
   'A generic program copied from the internet',
@@ -68,11 +69,12 @@ export function Problem() {
 
 /* Standalone hero-video band shown between the strip and the problem section */
 export function HeroVideoBand() {
+  const { heroVideoTitle } = useCopy()
   return (
     <section className="pt-10">
       <Container>
         <Reveal className="overflow-hidden rounded-brand border border-ink/12 shadow-[0_18px_50px_rgba(0,0,0,0.12)]">
-          <YouTubeEmbed id="UYJhKPT3tt0" title="Performance & Health Assessment — DH Tervuren" autoplay />
+          <YouTubeEmbed id="UYJhKPT3tt0" title={heroVideoTitle} autoplay />
         </Reveal>
       </Container>
     </section>

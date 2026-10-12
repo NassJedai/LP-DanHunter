@@ -157,3 +157,11 @@ export const includes = [
   { b: 'An in-depth conversation', rest: 'with a trained coach — 60 minutes just for you.' },
   { b: 'Your priorities + our recommendation', rest: '— a clear, actionable starting plan.' },
 ]
+
+// ---------------------------------------------------------------- Studio visit pages (/visit)
+
+// WhatsApp CTA: +32 495 94 09 67. Each language opens the chat with its own
+// pre-filled first message (see src/i18n).
+export const WHATSAPP_NUMBER = '32495940967'
+export const whatsappUrl = (message) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`

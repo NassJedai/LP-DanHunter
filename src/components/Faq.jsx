@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Container, SectionHeading, Reveal } from './ui'
-import { faqs } from '../data/content'
+import { useCopy } from '../lib/locale'
 
 function FaqItem({ q, a, open, onToggle }) {
   return (
@@ -35,8 +35,10 @@ function FaqItem({ q, a, open, onToggle }) {
   )
 }
 
-export function Faq() {
-  const [openSet, setOpenSet] = useState(() => new Set(faqs.map((f, i) => (f.defaultOpen ? i : null)).filter((v) => v !== null)))
+export function Faq({ items: itemsProp, eyebrow = 'FAQ — Performance & Health Assessment' }) {
+  const { faq } = useCopy()
+  const items = itemsProp ?? faq.items
+  const [openSet, setOpenSet] = useState(() => new Set(items.map((f, i) => (f.defaultOpen ? i : null)).filter((v) => v !== null)))
 
   const toggle = (i) =>
     setOpenSet((prev) => {
@@ -51,13 +53,13 @@ export function Faq() {
         <Reveal>
           <SectionHeading
             align="center"
-            eyebrow="FAQ — Performance & Health Assessment"
-            title="The questions we get asked."
+            eyebrow={eyebrow}
+            title={faq.title}
           />
         </Reveal>
 
         <div className="mx-auto mt-10 grid max-w-[760px] gap-3">
-          {faqs.map((f, i) => (
+          {items.map((f, i) => (
             <Reveal key={f.q} delay={(i % 3) * 50}>
               <FaqItem q={f.q} a={f.a} open={openSet.has(i)} onToggle={() => toggle(i)} />
             </Reveal>

@@ -13,7 +13,6 @@ import { Scorecard } from './components/Scorecard'
 import { FinalCta } from './components/FinalCta'
 import { Footer } from './components/Footer'
 import { MobileCta } from './components/MobileCta'
-import { ExitIntentModal } from './components/ExitIntentModal'
 
 export default function App() {
   return (
@@ -36,7 +35,6 @@ export default function App() {
       </main>
       <Footer />
       <MobileCta />
-      <ExitIntentModal />
     </>
   )
 }

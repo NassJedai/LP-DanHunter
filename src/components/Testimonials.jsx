@@ -1,26 +1,29 @@
 import { Container, SectionHeading, Reveal } from './ui'
 import { SelfHostedVideo } from './SelfHostedVideo'
 import { testimonials, TESTIMONIAL_VIDEO_URL } from '../data/content'
+import { useCopy } from '../lib/locale'
 
 export function Testimonials() {
+  const { testimonials: t } = useCopy()
   return (
     <section className="bg-bg py-[74px] text-txt">
       <Container>
         <Reveal>
-          <SectionHeading tone="dark" eyebrow="What our Tervuren members say" title="Real results. And a real community." />
+          <SectionHeading tone="dark" eyebrow={t.eyebrow} title={t.title} />
         </Reveal>
 
         <Reveal className="mt-5 inline-flex items-center gap-3 rounded-[14px] border border-txt/12 bg-card px-[18px] py-3">
           <span className="text-[1.05rem] tracking-[2px] text-gold">★★★★★</span>
           <span className="font-display text-[1.8rem] leading-none text-white">5.0</span>
-          <span className="text-[0.85rem] font-semibold text-txt/70">from 97 Google reviews · Dan Hunter, Tervuren</span>
+          <span className="text-[0.85rem] font-semibold text-txt/70">{t.rating}</span>
         </Reveal>
+        {t.reviewsNote && <p className="mt-2.5 text-[0.8rem] text-txt/50">{t.reviewsNote}</p>}
 
         <div className="mt-[34px] max-w-[260px]">
           <Reveal>
             <SelfHostedVideo
               src={TESTIMONIAL_VIDEO_URL}
-              title="Member testimonial — DH Tervuren"
+              title={t.videoTitle}
               className="aspect-[9/16]"
             />
           </Reveal>

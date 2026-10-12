@@ -1,22 +1,20 @@
-import { Container, SectionHeading, Reveal, Button } from './ui'
+import { Container, SectionHeading, Reveal } from './ui'
+import { CtaButton } from './CtaButton'
 import { Icon } from './Icon'
-import { features, BOOKING_URL } from '../data/content'
+import { useCopy } from '../lib/locale'
 
 export function Differentiators() {
+  const { diff: t } = useCopy()
+  const [before, emphasis, after] = t.wideBody
   return (
     <section className="bg-bg py-[74px] text-txt">
       <Container>
         <Reveal>
-          <SectionHeading
-            tone="dark"
-            eyebrow="What makes DH different"
-            title="You don't join a gym. You enter a system."
-            lead="At DH, every decision is deliberate — from your first assessment to every adjustment of your program."
-          />
+          <SectionHeading tone="dark" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
         </Reveal>
 
         <div className="mt-11 grid gap-5 min-[820px]:grid-cols-3">
-          {features.map((f, i) => (
+          {t.features.map((f, i) => (
             <Reveal
               key={f.title}
               delay={(i % 3) * 70}
@@ -36,16 +34,14 @@ export function Differentiators() {
               <Icon name="drop" className="h-6 w-6 text-gold" />
             </div>
             <div>
-              <h3 className="mb-2 text-[1.14rem] font-bold text-white">Health at the heart of performance</h3>
+              <h3 className="mb-2 text-[1.14rem] font-bold text-white">{t.wideTitle}</h3>
               <p className="max-w-[56ch] text-[0.95rem] text-txt/70">
-                Where others look only at your muscles, we understand what's happening inside: energy, recovery,
-                hormones, inflammation. A performance <em className="italic">and</em> health approach — built to last, not
-                to burn you out in six weeks.
+                {before}
+                <em className="italic">{emphasis}</em>
+                {after}
               </p>
             </div>
-            <Button href={BOOKING_URL} className="whitespace-nowrap justify-self-start min-[820px]:justify-self-auto">
-              Book my assessment
-            </Button>
+            <CtaButton arrow={false} className="justify-self-start min-[820px]:justify-self-auto min-[820px]:whitespace-nowrap" />
           </Reveal>
         </div>
       </Container>

@@ -1,23 +1,24 @@
 import { Container } from './ui'
 import { Logo } from './Logo'
-import { BOOKING_URL } from '../data/content'
+import { useCta } from '../lib/cta'
+import { useCopy } from '../lib/locale'
 
 export function Footer() {
+  const cta = useCta()
+  const { footer: t } = useCopy()
   return (
     <footer className="bg-bg pb-10 pt-11 text-txt/70">
       <Container className="grid gap-7 min-[720px]:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <Logo height={76} className="mb-4" />
-          <p className="text-[0.95rem] leading-[1.9]">
-            Personal training, performance &amp; health. We start with you, then build the right strategy around you.
-          </p>
+          <p className="text-[0.95rem] leading-[1.9]">{t.tagline}</p>
         </div>
         <div>
-          <h4 className="mb-3.5 text-[0.8rem] font-extrabold uppercase tracking-[0.1em] text-white">Opening hours</h4>
+          <h4 className="mb-3.5 text-[0.8rem] font-extrabold uppercase tracking-[0.1em] text-white">{t.hoursTitle}</h4>
           <p className="text-[0.95rem] leading-[1.9]">
-            Monday – Friday: 06:00 – 21:00
+            {t.weekdays}
             <br />
-            Saturday &amp; Sunday: 06:30 – 15:00
+            {t.weekend}
           </p>
         </div>
         <div>
@@ -25,7 +26,7 @@ export function Footer() {
           <p className="text-[0.95rem] leading-[1.9]">
             Brusselsesteenweg 15B
             <br />
-            3080 Tervuren, Belgium
+            {t.city}
             <br />
             <a href="tel:+3226872160" className="transition-colors hover:text-red">
               +32 (0)2 687 21 60
@@ -33,20 +34,19 @@ export function Footer() {
           </p>
           <p className="mt-2.5">
             <a
-              href={BOOKING_URL}
+              href={cta.href}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[0.95rem] transition-colors hover:text-red"
             >
-              → Book my assessment
+              → {cta.label}
             </a>
           </p>
         </div>
       </Container>
       <Container className="mt-[30px]">
         <div className="border-t border-txt/12 pt-5 text-center text-[0.82rem] text-txt/45">
-          © {new Date().getFullYear()} DH — Do It For You · Performance &amp; Health Assessment, Tervuren. All rights
-          reserved.
+          © {new Date().getFullYear()} {t.rights}
         </div>
       </Container>
     </footer>
